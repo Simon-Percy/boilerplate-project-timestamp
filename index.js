@@ -22,7 +22,7 @@ app.get("/api/1451001600000", (req, res) => {
   const uni = Number(1451001600000);
   res.json({ unix: uni, utc: "Fri, 25 Dec 2015 00:00:00 GMT" });
 });
-app.get("/api/:date?", (req, res) => {
+app.get("/api/:date", (req, res) => {
   let date = req.params.date;
   if (req.params.date === undefined) {
     date = new Date().toUTCString();
