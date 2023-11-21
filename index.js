@@ -26,8 +26,7 @@ app.get("/api/:date?", (req, res) => {
   let date = req.params.date;
   if (req.params.date === undefined) {
     date = new Date().toUTCString();
-  }
-  if (!date.match(/^(\d{4})-(\d{2})-(\d{2})$/)) {
+  } else if (!date.match(/^(\d{4})-(\d{2})-(\d{2})$/)) {
     res.json({ error: "Invalid Date" });
     return;
   }
