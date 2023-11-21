@@ -28,7 +28,7 @@ app.get("/api/:date?", (req, res) => {
 
     res.json({ unix: uni, utc: date });
     return;
-  } else if (!date.match(/(\d-\d+-\d)/)) {
+  } else if (new Date(date) === "Invalid Date") {
     res.json({ error: "Invalid Date" });
     return;
   }
