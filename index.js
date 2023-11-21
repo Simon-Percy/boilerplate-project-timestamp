@@ -32,9 +32,11 @@ app.get("/api/:date?", (req, res) => {
     res.json({ error: "Invalid Date" });
     return;
   }
-  const longDate = new Date(date).toUTCString();
-  const uni = Number(Date.parse(date));
-  res.json({ unix: uni, utc: longDate });
+  if (new Date(date)) {
+    const longDate = new Date(date).toUTCString();
+    const uni = Number(Date.parse(date));
+    res.json({ unix: uni, utc: longDate });
+  }
 });
 
 // listen for requests :)
