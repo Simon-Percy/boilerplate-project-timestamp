@@ -29,7 +29,7 @@ app.get("/api/:date?", (req, res) => {
   } else if (!date.match(/(\d-\d+-\d)/g)) {
     res.json({ error: "Invalid Date" });
   }
-  const longDate = new Date(date).toString();
+  const longDate = new Date(date).toGMTString();
   const uni = Number(Date.parse(date));
   res.json({ unix: uni, utc: longDate });
 });
