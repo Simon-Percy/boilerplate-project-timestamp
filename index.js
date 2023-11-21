@@ -29,7 +29,7 @@ app.get("/api/:date?", (req, res) => {
   } else if (!date.match(/^(\d{4})-(\d{2})-(\d{2})$/)) {
     res.json({ error: "Invalid Date" });
   }
-  const longDate = new Date(date).toUTCString();
+  const longDate = new Date(+date).toUTCString();
   const uni = Number(Date.parse(date));
   res.json({ unix: uni, utc: longDate });
 });
