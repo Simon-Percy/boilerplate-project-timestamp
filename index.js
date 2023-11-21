@@ -25,11 +25,11 @@ app.get("/api/1451001600000", (req, res) => {
 app.get("/api/:date?", (req, res) => {
   let date = req.params.date;
   if (req.params.date === undefined) {
-    date = new Date().toString();
+    date = new Date().toUTCString();
   } else if (!date.match(/(\d-\d+-\d)/g)) {
     res.json({ error: "Invalid Date" });
   }
-  const longDate = new Date(date).toGMTString();
+  const longDate = new Date(date).toUTCString();
   const uni = Number(Date.parse(date));
   res.json({ unix: uni, utc: longDate });
 });
